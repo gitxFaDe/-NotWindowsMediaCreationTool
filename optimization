@@ -1,0 +1,9 @@
+Use variable $driveLetter in the functions Prepare-USBDrive and ExtractISOtoUSB
+
+Lookup the fastest download mirror and change variable $isoURL (https://github.com/westandskif/rate-mirrors)
+
+Execute Write-Output only on success
+
+Ask the user to fill the $driveLetter variable at script execution
+
+Set ExecutionPolicy at execution
