@@ -2,6 +2,8 @@
 
 The laziest way to get rid of spyware :)
 
+#Always use at your own risk!
+
 # Steps to Execute:
 
 Save the Script: Save the script with the filename freedom.ps1.	
@@ -16,7 +18,7 @@ Execute the Script: Run the script by typing .\freedom.ps1 and pressing Enter.
 	
 # Notes:	
 	
-Make sure to replace $DriveLetter with the correct letter of your USB drive.	
+Make sure to replace $DriveLetter with the correct letter of your USB drive. (watch out for line 17,22 and 42)
 
 This script assumes 7-Zip is installed at the default path. If 7-Zip is installed in a different location, update the $sevenZipPath variable accordingly.	
 
