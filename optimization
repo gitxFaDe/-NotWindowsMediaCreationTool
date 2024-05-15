@@ -4,6 +4,6 @@ Lookup the fastest download mirror and change variable $isoURL (https://github.c
 
 Execute Write-Output only on success
 
-Ask the user to fill the $driveLetter variable at script execution
+Ask the user to fill the $driveLetter variable at script execution -> Read-Host
 
-Set ExecutionPolicy at script execution
+Set ExecutionPolicy at script execution?
