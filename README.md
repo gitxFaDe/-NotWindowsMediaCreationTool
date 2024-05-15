@@ -16,8 +16,8 @@ Execute the Script: Run the script by typing .\freedom.ps1 and pressing Enter.
 	
 # Notes:	
 	
-Make sure to replace $usbDriveLetter with the correct letter of your USB drive.	
+Make sure to replace $DriveLetter with the correct letter of your USB drive.	
 
 This script assumes 7-Zip is installed at the default path. If 7-Zip is installed in a different location, update the $sevenZipPath variable accordingly.	
 
-Ensure no important data is on the USB drive as it will be formatted during this process.	
+Ensure no important data is on the USB drive as it will be formatted during this process.
