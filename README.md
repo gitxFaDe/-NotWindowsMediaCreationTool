@@ -2,7 +2,7 @@
 
 The laziest way to get rid of spyware :)
 
-# Always use at your own risk!
+Always use at your own risk!
 
 # Steps to Execute:
 
