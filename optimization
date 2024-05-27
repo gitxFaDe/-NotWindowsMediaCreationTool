@@ -7,3 +7,5 @@ Execute Write-Output only on success
 Ask the user to fill the $driveLetter variable at script execution -> Read-Host
 
 Set ExecutionPolicy at script execution?
+
+Choose Distribution before looking up download mirror
