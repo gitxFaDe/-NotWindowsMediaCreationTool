@@ -6,4 +6,4 @@ Execute Write-Output only on success
 
 Set ExecutionPolicy at script execution? -> Sign Code
 
-Line 77, check for correct input
+Lookup aviable USB drive letters and let user choose
