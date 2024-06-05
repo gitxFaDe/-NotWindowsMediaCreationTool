@@ -73,13 +73,13 @@ function ExtractISOToUSB {
         Write-Error "7-Zip is not installed. Please install 7-Zip and try again."
         exit
     }
-    & Invoke-Expression -Command ('. "{0}" x {1} -o{2}' -f "$SevenZipPath", $DownloadPath, $DriveLetter)
+    & Invoke-Expression -Command ('. "{0}" x {1} -o{2}:\' -f "$SevenZipPath", $DownloadPath, $Driveletter")
     Write-Output "ISO extracted to USB drive $DriveLetter successfully."
 }
 
 # Main script execution
-Download-LinuxISO
-Prepare-USBDrive -driveLetter $DriveLetter
-ExtractISOToUSB -isoPath $DownloadPath -driveLetter $UsbDriveLetter
+#Download-LinuxISO
+#Prepare-USBDrive -driveLetter $DriveLetter
+ExtractISOToUSB -isoPath $DownloadPath -driveLetter $DriveLetter
 
 Write-Output "Bootable $Distro Linux USB drive created successfully."
