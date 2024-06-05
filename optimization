@@ -1,4 +1,4 @@
-Use variable $driveLetter in the functions Prepare-USBDrive
+Use variable $driveLetter in the functions Prepare-USBDrive -> change from CMDlet to Powershell command?
 
 Lookup the fastest download mirror and change variable $isoURL (https://github.com/westandskif/rate-mirrors)
 
