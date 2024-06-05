@@ -78,8 +78,8 @@ function ExtractISOToUSB {
 }
 
 # Main script execution
-#Download-LinuxISO
-#Prepare-USBDrive -driveLetter $DriveLetter
+Download-LinuxISO
+Prepare-USBDrive -driveLetter $DriveLetter
 ExtractISOToUSB -isoPath $DownloadPath -driveLetter $DriveLetter
 
 Write-Output "Bootable $Distro Linux USB drive created successfully."
