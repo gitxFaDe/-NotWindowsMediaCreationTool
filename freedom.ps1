@@ -1,6 +1,6 @@
 # Define variables
 $DownloadPath = "$env:USERPROFILE\Downloads\notwindows.iso"
-$DriveLetter = Read-Host "Laufwerksbuchstabe"  # watch out for line 51 and 56
+$DriveLetter = Read-Host "DriveLetter"  
 
 # Choose Distribution 
 $Choices = @("Arch", "Ubuntu", "Debian")
