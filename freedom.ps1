@@ -1,6 +1,6 @@
 # Define variables
 $DownloadPath = "$env:USERPROFILE\Downloads\notwindows.iso"
-$DriveLetter = Read-Host "Laufwerksbuchstabe"  # watch out for line 51 and 56
+$DriveLetter = Read-Host "DriveLetter"  
 
 # Choose Distribution 
 $Choices = @("Arch", "Ubuntu", "Debian")
@@ -48,12 +48,12 @@ if ( $Distro -eq 'Debian' )
 function Prepare-USBDrive {
     Write-Output "Preparing USB drive $DriveLetter..."
     $DiskPartScript = @"
-select volume D
+select volume $DriveLetter
 clean
 create partition primary
 active
 format fs=fat32 quick
-assign letter=D
+assign letter=$DriveLetter
 exit
 "@
     $DiskPartScript | Out-File -FilePath "$env:TEMP\diskpart_script.txt" -Encoding ASCII
