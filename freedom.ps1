@@ -48,12 +48,12 @@ if ( $Distro -eq 'Debian' )
 function Prepare-USBDrive {
     Write-Output "Preparing USB drive $DriveLetter..."
     $DiskPartScript = @"
-select volume $DriveLetter
+select volume D
 clean
 create partition primary
 active
 format fs=fat32 quick
-assign letter=$DriveLetter
+assign letter=D
 exit
 "@
     $DiskPartScript | Out-File -FilePath "$env:TEMP\diskpart_script.txt" -Encoding ASCII
