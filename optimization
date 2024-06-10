@@ -5,5 +5,3 @@ Lookup the fastest download mirror and change variable $isoURL (https://github.c
 Execute Write-Output only on success
 
 Set ExecutionPolicy at script execution? -> Sign Code
-
-Lookup aviable USB drive letters and let user choose
