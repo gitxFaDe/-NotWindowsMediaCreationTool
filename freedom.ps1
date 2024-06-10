@@ -1,5 +1,5 @@
 # Define variables
-$DownloadPath = "$env:USERPROFILE\Downloads\notwindows.iso"
+$DownloadPath = "$env:USERPROFILE\Downloads\Test.iso"
   
 # Retrieve the list of partitions
 $Partitions = Get-Partition | Select-Object DriveLetter
@@ -24,7 +24,7 @@ if ($SelectedPartition) {
 }
 
 # Choose Distribution 
-$Choices = @("Arch", "Ubuntu", "Debian", "EndavourOS")
+$Choices = @("Arch", "Ubuntu", "Debian", "EndavourOS", "Gentoo", "Kali Linux", "Linux Mint", "Pop!_OS", "Kubuntu", "CentOS", "Parrot Security", "Qubes OS")
 
 # Display the Choices to the user
 Write-Host "Please choose from the following options:"
@@ -36,11 +36,17 @@ for ($i = 0; $i -lt $Choices.Length; $i++) {
 $Selection = Read-Host "Enter the number of your choice"
 
 # Validate the input and convert it to the corresponding option
-if ($Selection -match '^\d+$' -and $Selection -gt 0 -and $Selection -le $Choices.Length) {
-    $ChosenOption = $Choices[$Selection - 1]
-    Write-Host "You selected: $ChosenOption"
-    $Distro = $ChosenOption
+if ($Selection -match '^[1-9]$|^10$' -and [int]$Selection -le $Choices.Length) {
+    # Convert selection to zero-based index
+    $Index = [int]$Selection - 1
+
+    # Retrieve the selected option
+    $SelectedOption = $Choices[$Index]
+
+    # Display the selected option
+    Write-Host "You have selected: $SelectedOption"
 } else {
+    # Handle invalid input
     Write-Host "Invalid selection. Please enter a number between 1 and $($Choices.Length)."
 }
 
@@ -61,6 +67,38 @@ if ( $Distro -eq 'Debian' )
 if ( $Distro -eq 'EndavourOS' )
 {
 	$IsoUrl = "https://mirror.alpix.eu/endeavouros/iso/EndeavourOS_Gemini-2024.04.20.iso"
+}
+if ( $Distro -eq 'Gentoo' )
+{
+	$IsoUrl = "https://distfiles.gentoo.org/releases/amd64/autobuilds/20240526T163557Z/livegui-amd64-20240526T163557Z.iso"
+}
+if ( $Distro -eq 'Kali Linux' )
+{
+	$IsoUrl = "https://cdimage.kali.org/kali-2024.2/kali-linux-2024.2-installer-amd64.iso"
+}
+if ( $Distro -eq 'Linux Mint' )
+{
+	$IsoUrl = "https://ftp.rz.uni-frankfurt.de/pub/mirrors/linux-mint/iso/stable/21.3/linuxmint-21.3-cinnamon-64bit.iso"
+}
+if ( $Distro -eq 'Pop!_OS' )
+{
+	$IsoUrl = "https://iso.pop-os.org/22.04/amd64/nvidia/41/pop-os_22.04_amd64_nvidia_41.iso"
+}
+if ( $Distro -eq 'Kubuntu' )
+{
+	$IsoUrl = "https://cdimage.ubuntu.com/kubuntu/releases/24.04/release/kubuntu-24.04-desktop-amd64.iso"
+}
+if ( $Distro -eq 'CentOS' )
+{
+	$IsoUrl = "https://mirrors.centos.org/mirrorlist?path=/9-stream/BaseOS/x86_64/iso/CentOS-Stream-9-latest-x86_64-dvd1.iso&redirect=1&protocol=https"
+}
+if ( $Distro -eq 'Parrot Security' )
+{
+	$IsoUrl = "https://deb.parrot.sh/parrot/iso/6.1/Parrot-security-6.1_amd64.iso"
+}
+if ( $Distro -eq 'Qubes OS' )
+{
+	$IsoUrl = "https://ftp.halifax.rwth-aachen.de/qubes/iso/Qubes-R4.2.1-x86_64.iso"
 }
 
     Write-Output "Downloading the latest $Distro Linux ISO from $IsoUrl..."
