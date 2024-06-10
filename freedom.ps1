@@ -43,7 +43,7 @@ if ($Selection -match '^\d+$' -and $Selection -gt 0 -and $Selection -le $Choices
     Write-Host "Invalid selection. Please enter a number between 1 and $($Choices.Length)."
 }
 
-# Function to download the latest Arch Linux ISO
+# Function to download the latest Linux ISO
 function Download-LinuxISO {
 if ( $Distro -eq 'Arch' )
 {
