@@ -72,16 +72,16 @@ if ( $Distro -eq 'EndavourOS' )
 function Prepare-USBDrive {
     Write-Output "Preparing USB drive $DriveLetter..."
     $DiskPartScript = @"
-select volume D
+select volume $DriveLetter
 clean
 create partition primary
 active
 format fs=fat32 quick
-assign letter=D
+assign letter=$DriveLetter
 exit
 "@
-    $DiskPartScript | Out-File -FilePath "$env:TEMP\diskpart_script.txt" -Encoding ASCII
-    Start-Process -FilePath "diskpart.exe" -ArgumentList "/s `"$env:TEMP\diskpart_script.txt`"" -Wait -NoNewWindow
+    $DiskPartScript | Out-File -FilePath "$env:USERPROFILE\Downloads\diskpart_script.txt" -Encoding ASCII
+    Start-Process -FilePath "diskpart.exe" -ArgumentList "/s `"$env:USERPROFILE\Downloads\diskpart_script.txt`"" -Wait -NoNewWindow
     Write-Output "USB drive $DriveLetter prepared successfully."
 }
 
@@ -107,3 +107,7 @@ Prepare-USBDrive -driveLetter $DriveLetter
 ExtractISOToUSB -isoPath $DownloadPath -driveLetter $DriveLetter
 
 Write-Output "Bootable $Distro Linux USB drive created successfully."
+
+#Cleanup Files
+Remove-Item $env:USERPROFILE\Downloads\diskpart_script.txt
+Remove-Item $env:USERPROFILE\Downloads\notwindows.iso
