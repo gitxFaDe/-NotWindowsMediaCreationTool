@@ -17,8 +17,6 @@ Set ExecutionPolicy in Powershell (Set-ExecutionPolicy -ExecutionPolicy Unrestri
 Execute the Script: Run the script by typing .\freedom.ps1 and pressing Enter.	
 	
 # Notes:	
-	
-Make sure to replace your DriveLetter with the correct letter of your USB drive. (watch out for line 51 and 56)
 
 This script assumes 7-Zip is installed at the default path. If 7-Zip is installed in a different location, update the $sevenZipPath variable accordingly.	
 
