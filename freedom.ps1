@@ -23,7 +23,7 @@ if ($SelectedPartition) {
 }
 
 # Choose Distribution 
-$Choices = @("Arch", "Ubuntu", "Debian")
+$Choices = @("Arch", "Ubuntu", "Debian", "EndavourOS")
 
 # Display the Choices to the user
 Write-Host "Please choose from the following options:"
@@ -45,7 +45,7 @@ if ($Selection -match '^\d+$' -and $Selection -gt 0 -and $Selection -le $Choices
 
 # Function to download the latest Arch Linux ISO
 function Download-LinuxISO {
-	if ( $Distro -eq 'Arch' )
+if ( $Distro -eq 'Arch' )
 {
 	$IsoUrl = "https://packages.oth-regensburg.de/archlinux/iso/latest/archlinux-x86_64.iso"
 }
@@ -56,6 +56,10 @@ if ( $Distro -eq 'Ubuntu' )
 if ( $Distro -eq 'Debian' )
 {
 	$IsoUrl = "https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-12.5.0-amd64-netinst.iso"
+}
+if ( $Distro -eq 'EndavourOS' )
+{
+	$IsoUrl = "https://mirror.alpix.eu/endeavouros/iso/EndeavourOS_Gemini-2024.04.20.iso"
 }
 
     Write-Output "Downloading the latest $Distro Linux ISO from $IsoUrl..."
