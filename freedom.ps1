@@ -2,24 +2,30 @@
 $DownloadPath = "$env:USERPROFILE\Downloads\notwindows.iso"
   
 # Retrieve the list of partitions
-$Partitions = Get-Partition | Select-Object PartitionNumber, DriveLetter
+$Partitions = Get-Partition | Select-Object DriveLetter
 
-# Display the partitions in a formatted table with only PartitionNumber and DriveLetter
-$Partitions | Format-Table -AutoSize
+# Filter out partitions without a drive letter
+$PartitionsWithDriveLetter = $Partitions | Where-Object { $_.DriveLetter -ne $null }
 
-# Prompt the user to select a partition
-Write-Host "Please enter the partition number you want to select:"
-$SelectedNumber = Read-Host
+# Add an index column starting from 1
+$IndexedPartitions = $PartitionsWithDriveLetter | Select-Object @{Name='Index'; Expression={[array]::IndexOf($PartitionsWithDriveLetter, $_) + 1}}, DriveLetter
 
-# Find the selected partition based on the input number
-$SelectedPartition = $Partitions | Where-Object { $_.PartitionNumber -eq $SelectedNumber }
+# Display the drives in a formatted table with Index and DriveLetter
+$IndexedPartitions | Format-Table -AutoSize
+
+# Prompt the user to select a partition by index number
+Write-Host "Please enter the index number of the partition you want to select:"
+$SelectedIndex = [int](Read-Host)
+
+# Find the selected partition based on the input index number
+$SelectedPartition = $IndexedPartitions | Where-Object { $_.Index -eq $SelectedIndex }
 
 if ($SelectedPartition) {
     # Store the selected drive letter in a variable
     $DriveLetter = $SelectedPartition.DriveLetter
-    Write-Host "You selected the following drive letter: $selectedDriveLetter"
+    Write-Host "You selected the following drive letter: $DriveLetter"
 } else {
-    Write-Host "No partition found with the specified number."
+    Write-Host "No partition found with the specified index number."
 }
 
 # Choose Distribution 
@@ -108,6 +114,6 @@ ExtractISOToUSB -isoPath $DownloadPath -driveLetter $DriveLetter
 
 Write-Output "Bootable $Distro Linux USB drive created successfully."
 
-#Cleanup Files
+# Cleanup Files
 Remove-Item $env:USERPROFILE\Downloads\diskpart_script.txt
 Remove-Item $env:USERPROFILE\Downloads\notwindows.iso
