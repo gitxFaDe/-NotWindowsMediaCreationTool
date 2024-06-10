@@ -1,5 +1,5 @@
 # Define variables
-$DownloadPath = "$env:USERPROFILE\Downloads\Test.iso"
+$DownloadPath = "$env:USERPROFILE\Downloads\notwindows.iso"
   
 # Retrieve the list of partitions
 $Partitions = Get-Partition | Select-Object DriveLetter
