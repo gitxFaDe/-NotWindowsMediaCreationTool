@@ -1,6 +1,26 @@
 # Define variables
 $DownloadPath = "$env:USERPROFILE\Downloads\notwindows.iso"
-$DriveLetter = Read-Host "DriveLetter"  
+  
+# Retrieve the list of partitions
+$Partitions = Get-Partition | Select-Object PartitionNumber, DriveLetter
+
+# Display the partitions in a formatted table with only PartitionNumber and DriveLetter
+$Partitions | Format-Table -AutoSize
+
+# Prompt the user to select a partition
+Write-Host "Please enter the partition number you want to select:"
+$SelectedNumber = Read-Host
+
+# Find the selected partition based on the input number
+$SelectedPartition = $Partitions | Where-Object { $_.PartitionNumber -eq $SelectedNumber }
+
+if ($SelectedPartition) {
+    # Store the selected drive letter in a variable
+    $DriveLetter = $SelectedPartition.DriveLetter
+    Write-Host "You selected the following drive letter: $selectedDriveLetter"
+} else {
+    Write-Host "No partition found with the specified number."
+}
 
 # Choose Distribution 
 $Choices = @("Arch", "Ubuntu", "Debian")
