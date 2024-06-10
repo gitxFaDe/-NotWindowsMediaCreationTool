@@ -42,6 +42,9 @@ if ($Selection -match '^[1-9]$|^10$' -and [int]$Selection -le $Choices.Length) {
 
     # Retrieve the selected option
     $SelectedOption = $Choices[$Index]
+	
+	#Fill variable
+	$Distro = $Choices[$Index]
 
     # Display the selected option
     Write-Host "You have selected: $SelectedOption"
