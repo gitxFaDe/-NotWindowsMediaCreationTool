@@ -80,7 +80,7 @@ function Prepare-USBDrive {
     $DiskPartScript = @"
 select volume $DriveLetter
 clean
-create partition primary
+create partition primary size=4096
 active
 format fs=fat32 quick
 assign letter=$DriveLetter
