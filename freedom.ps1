@@ -3,20 +3,15 @@ $DownloadPath = "$env:USERPROFILE\Downloads\notwindows.iso"
   
 # Retrieve the list of partitions
 $Partitions = Get-Partition | Select-Object DriveLetter
-
 # Filter out partitions without a drive letter
 $PartitionsWithDriveLetter = $Partitions | Where-Object { $_.DriveLetter -ne $null }
-
 # Add an index column starting from 1
 $IndexedPartitions = $PartitionsWithDriveLetter | Select-Object @{Name='Index'; Expression={[array]::IndexOf($PartitionsWithDriveLetter, $_) + 1}}, DriveLetter
-
 # Display the drives in a formatted table with Index and DriveLetter
 $IndexedPartitions | Format-Table -AutoSize
-
 # Prompt the user to select a partition by index number
 Write-Host "Please enter the index number of the partition you want to select:"
 $SelectedIndex = [int](Read-Host)
-
 # Find the selected partition based on the input index number
 $SelectedPartition = $IndexedPartitions | Where-Object { $_.Index -eq $SelectedIndex }
 
