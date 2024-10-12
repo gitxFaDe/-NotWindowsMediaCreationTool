@@ -24,7 +24,7 @@ if ($SelectedPartition) {
 }
 
 # Choose Distribution 
-$Choices = @("Arch", "Ubuntu", "Debian", "EndavourOS", "Gentoo", "Kali Linux", "Linux Mint", "Pop!_OS", "Kubuntu", "CentOS", "Parrot Security", "Qubes OS")
+$Choices = @("Arch", "Ubuntu", "Debian", "EndavourOS", "Gentoo", "Kali Linux", "Linux Mint", "Pop!_OS", "Kubuntu", "CentOS", "Parrot Security", "Qubes OS", "Manjaro")
 
 # Display the Choices to the user
 Write-Host "Please choose from the following options:"
@@ -102,6 +102,10 @@ if ( $Distro -eq 'Parrot Security' )
 if ( $Distro -eq 'Qubes OS' )
 {
 	$IsoUrl = "https://ftp.halifax.rwth-aachen.de/qubes/iso/Qubes-R4.2.1-x86_64.iso"
+}
+if ( $Distro -eq 'Manjaro' )
+{
+	$IsoUrl = "https://download.manjaro.org/kde/24.1.0/manjaro-kde-24.1.0-241001-linux610.iso"
 }
 
     Write-Output "Downloading the latest $Distro Linux ISO from $IsoUrl..."
